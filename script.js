@@ -15,6 +15,20 @@ client.onreadystatechange = function() {
 }
 client.send();
 
+const client2 = new XMLHttpRequest();
+client2.open('GET', 'https://raw.githubusercontent.com/Gharib110/cf-ip-scanner/main/cloudfront_ipv4.txt');
+client2.onreadystatechange = function() {
+  cfIPv42 = client2.responseText.split("\n").map((cidr) => cidr.trim()).filter((cidr) => isCIDR(cidr));
+  document.getElementById('btn-start').disabled = false;
+  const tbody2 = document.getElementById('ip-ranges-body');
+  cfIPv42.forEach((cidr) => {
+    const row2 = tbody2.insertRow();
+    const cell2 = row2.insertCell();
+    cell2.appendChild(document.createTextNode(cidr));
+  })
+}
+client2.send();
+
 let maxIP;
 let testNo;
 let validIPs;
