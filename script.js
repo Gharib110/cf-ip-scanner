@@ -2,7 +2,7 @@ var cfIPv4 = []
 var cfIPv4ToScan = []
 const noOfEachRange24 = 30
 const client = new XMLHttpRequest();
-client.open('GET', 'https://raw.githubusercontent.com/Gharib110/cf-ip-scanner/main/ipv4.txt');
+client.open('GET', 'https://raw.githubusercontent.com/Gharib110/cf-ip-scanner/main/cloudflare_ipv4.txt');
 client.onreadystatechange = function() {
   cfIPv4 = client.responseText.split("\n").map((cidr) => cidr.trim()).filter((cidr) => isCIDR(cidr));
   document.getElementById('btn-start').disabled = false;
